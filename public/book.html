@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Book a session</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+</head>
+<body data-title-suffix="Book a session">
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="/"><span class="brand-mark" data-p="initials">··</span><span data-p="name"></span></a>
+      <nav class="nav-links" aria-label="Main">
+        <a href="/#topics">Topics</a>
+        <a href="/status">Booking status</a>
+        <a class="btn btn-ghost btn-sm" href="/">← Back to site</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="page-head">
+      <span class="kicker">Book a session</span>
+      <h1>Pick a time that works for your event</h1>
+      <p>All times are in <strong data-p="availability.timezoneLabel"></strong>. Your request holds the slot right away and I’ll confirm it personally.</p>
+    </div>
+
+    <div id="booking-area" class="booking-layout">
+      <div>
+        <!-- Step 1 -->
+        <section class="panel" aria-labelledby="s1">
+          <div class="panel-title"><span class="num">1</span><h2 id="s1">How long is the session?</h2></div>
+          <div class="chips" id="durations" role="group" aria-label="Session length"></div>
+        </section>
+
+        <!-- Step 2 -->
+        <section class="panel" aria-labelledby="s2">
+          <div class="panel-title"><span class="num">2</span><h2 id="s2">Choose a date</h2></div>
+          <div class="cal-head">
+            <h3 id="cal-title">…</h3>
+            <div class="cal-nav">
+              <button class="icon-btn" id="prev-month" aria-label="Previous month">‹</button>
+              <button class="icon-btn" id="next-month" aria-label="Next month">›</button>
+            </div>
+          </div>
+          <div class="cal-grid" id="calendar" role="grid" aria-labelledby="cal-title"></div>
+          <div class="cal-legend">
+            <span><i class="lg-available"></i> Open</span>
+            <span><i class="lg-limited"></i> Some slots taken</span>
+            <span><i class="lg-full"></i> Fully booked</span>
+            <span><i class="lg-closed"></i> Unavailable</span>
+          </div>
+        </section>
+
+        <!-- Step 3 -->
+        <section class="panel locked" id="slot-panel" aria-labelledby="s3">
+          <div class="panel-title"><span class="num">3</span><h2 id="s3">Pick a start time</h2></div>
+          <p class="muted small" id="slot-hint">Select a date to see open times.</p>
+          <div class="slots" id="slots"></div>
+          <div class="timeline hidden" id="timeline"></div>
+        </section>
+
+        <!-- Step 4 -->
+        <section class="panel locked" id="form-panel" aria-labelledby="s4">
+          <div class="panel-title"><span class="num">4</span><h2 id="s4">Tell me about your event</h2></div>
+          <div id="form-alert"></div>
+          <form id="booking-form" novalidate>
+            <div class="form-grid">
+              <div class="field"><label for="f-name">Your name</label><input class="input" id="f-name" name="name" autocomplete="name" required /></div>
+              <div class="field"><label for="f-email">Email</label><input class="input" id="f-email" name="email" type="email" autocomplete="email" required /></div>
+              <div class="field"><label for="f-phone">Phone <span class="opt">(optional)</span></label><input class="input" id="f-phone" name="phone" type="tel" autocomplete="tel" /></div>
+              <div class="field">
+                <label for="f-role">You are a…</label>
+                <select class="input" id="f-role" name="role">
+                  <option>Student / club member</option>
+                  <option>Faculty / college staff</option>
+                  <option>Event organiser</option>
+                  <option>Company / HR / L&amp;D</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="field full"><label for="f-org">College or organisation</label><input class="input" id="f-org" name="organization" autocomplete="organization" placeholder="e.g. ABC Institute of Technology — CSE Department" required /></div>
+
+              <div class="field"><label for="f-type">Event type</label><select class="input" id="f-type" name="eventType" required></select></div>
+              <div class="field"><label for="f-topic-pick">Topic</label><select class="input" id="f-topic-pick"></select></div>
+              <div class="field full hidden" id="custom-topic-field"><label for="f-topic">Your topic / session title</label><input class="input" id="f-topic" name="topic" placeholder="e.g. Getting started with bug bounties" /></div>
+
+              <div class="field">
+                <label for="f-mode">Format</label>
+                <select class="input" id="f-mode" name="mode">
+                  <option>In person</option>
+                  <option>Online</option>
+                  <option>Hybrid</option>
+                </select>
+              </div>
+              <div class="field"><label for="f-size">Expected audience size <span class="opt">(optional)</span></label><input class="input" id="f-size" name="audienceSize" inputmode="numeric" placeholder="e.g. 150" /></div>
+              <div class="field full"><label for="f-location" id="f-location-label">Venue address</label><input class="input" id="f-location" name="location" placeholder="Hall name, campus, city" /></div>
+              <div class="field full"><label for="f-aud">Who is the audience? <span class="opt">(optional)</span></label><input class="input" id="f-aud" name="audienceType" placeholder="e.g. 2nd & 3rd year B.Tech students, mostly beginners" /></div>
+              <div class="field full"><label for="f-desc">Anything else I should know? <span class="opt">(optional)</span></label><textarea class="input" id="f-desc" name="description" placeholder="Goals for the session, budget / honorarium, travel, AV setup, other speakers…"></textarea></div>
+              <div class="hp" aria-hidden="true"><label>Website <input name="website" tabindex="-1" autocomplete="off" /></label></div>
+            </div>
+            <div class="form-actions">
+              <button class="btn btn-primary" type="submit" id="submit-btn">Send booking request</button>
+            </div>
+          </form>
+        </section>
+      </div>
+
+      <aside class="panel summary" aria-label="Booking summary">
+        <h3>Your booking</h3>
+        <dl>
+          <div><dt>Date</dt><dd id="sum-date"><span class="placeholder">Not selected</span></dd></div>
+          <div><dt>Time</dt><dd id="sum-time"><span class="placeholder">Not selected</span></dd></div>
+          <div><dt>Length</dt><dd id="sum-duration"></dd></div>
+          <div><dt>Topic</dt><dd id="sum-topic"><span class="placeholder">—</span></dd></div>
+        </dl>
+        <hr />
+        <p class="muted small">Requests are reviewed within 48 hours. You’ll get a booking reference to track the status.</p>
+      </aside>
+    </div>
+
+    <section id="success" class="panel success hidden" aria-live="polite"></section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <span>© <span data-year></span> <span data-p="name"></span></span>
+      <span><a href="/">Home</a><a href="/status">Booking status</a></span>
+    </div>
+  </footer>
+
+  <script src="/js/common.js"></script>
+  <script src="/js/book.js"></script>
+</body>
+</html>

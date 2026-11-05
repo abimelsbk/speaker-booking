@@ -1,0 +1,108 @@
+{
+  "name": "Your Name",
+  "initials": "YN",
+  "title": "Cybersecurity Educator & Public Speaker",
+  "tagline": "Talks that make security, technology and careers make sense — for students, teams and communities.",
+  "bio": "I speak at colleges, conferences and companies about cybersecurity, ethical hacking and building a career in tech. My sessions are hands-on, story-driven and built around the audience in the room — whether that is first-year students or a security team. Edit this bio in config.json.",
+  "location": "India · available to travel",
+  "photo": "",
+  "contactEmail": "",
+  "socials": [
+    { "label": "LinkedIn", "url": "https://www.linkedin.com/" },
+    { "label": "YouTube", "url": "https://www.youtube.com/" }
+  ],
+  "stats": [
+    { "value": "50+", "label": "Talks delivered" },
+    { "value": "10k+", "label": "Students reached" },
+    { "value": "30+", "label": "Colleges & orgs" },
+    { "value": "4.9/5", "label": "Average feedback" }
+  ],
+  "topics": [
+    {
+      "title": "Ethical Hacking 101",
+      "description": "How attackers think, live demos of common attacks, and how to start learning legally and safely.",
+      "tags": ["Students", "Live demo"]
+    },
+    {
+      "title": "Careers in Cybersecurity",
+      "description": "Roles, certifications, salaries and a realistic roadmap from college to your first security job.",
+      "tags": ["Career", "Q&A"]
+    },
+    {
+      "title": "Staying Safe Online",
+      "description": "Phishing, scams, passwords and privacy — practical habits for everyone, no jargon.",
+      "tags": ["Awareness", "All audiences"]
+    },
+    {
+      "title": "AI and the Future of Security",
+      "description": "How AI is changing both attack and defence, and what skills will matter next.",
+      "tags": ["Trends", "Keynote"]
+    },
+    {
+      "title": "VAPT for Teams",
+      "description": "A practical walkthrough of vulnerability assessment and penetration testing for engineering teams.",
+      "tags": ["Corporate", "Workshop"]
+    },
+    {
+      "title": "Building While Studying",
+      "description": "Turning side projects into a portfolio, internships and maybe a company — lessons from doing it.",
+      "tags": ["Students", "Motivation"]
+    }
+  ],
+  "formats": [
+    { "name": "Guest Lecture", "description": "A focused classroom or seminar-hall session, usually 45–90 minutes." },
+    { "name": "Keynote", "description": "Opening or closing talk for a fest, conference or company event." },
+    { "name": "Workshop", "description": "Hands-on, laptops-open session — from 2 hours to a full day." },
+    { "name": "Panel / Fireside Chat", "description": "Join a panel or a moderated conversation with Q&A." },
+    { "name": "Webinar", "description": "Online session for remote audiences, with live Q&A." }
+  ],
+  "testimonials": [
+    {
+      "quote": "Our students were still talking about the live demo a week later. Easily the best-attended session of our tech fest.",
+      "name": "Placeholder testimonial",
+      "role": "Faculty coordinator, Example College"
+    },
+    {
+      "quote": "Clear, practical and genuinely engaging. The team left with a checklist they started using the next day.",
+      "name": "Placeholder testimonial",
+      "role": "Engineering manager, Example Corp"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "How far in advance should I book?",
+      "a": "At least 3 days ahead, ideally 2–3 weeks for in-person events so travel can be arranged."
+    },
+    {
+      "q": "Is my slot confirmed immediately?",
+      "a": "Your request holds the slot straight away. I review every request personally and confirm (or suggest another time) usually within 48 hours."
+    },
+    {
+      "q": "Do you charge for talks?",
+      "a": "It depends on the event. Student-run and non-profit events are often free or travel-cost-only — mention your budget in the notes."
+    },
+    {
+      "q": "Can I suggest my own topic?",
+      "a": "Absolutely. Choose 'Something else' in the topic list and describe what your audience needs."
+    }
+  ],
+  "availability": {
+    "timezone": "Asia/Kolkata",
+    "timezoneLabel": "IST (GMT+5:30)",
+    "weeklyHours": {
+      "mon": ["17:00-21:00"],
+      "tue": ["17:00-21:00"],
+      "wed": ["17:00-21:00"],
+      "thu": ["17:00-21:00"],
+      "fri": ["10:00-13:00", "14:00-21:00"],
+      "sat": ["09:00-13:00", "14:00-19:00"],
+      "sun": ["10:00-16:00"]
+    },
+    "durations": [45, 60, 90, 120, 180, 240],
+    "slotStepMinutes": 30,
+    "bufferMinutes": 30,
+    "minNoticeDays": 3,
+    "maxAdvanceDays": 180,
+    "maxBookingsPerDay": 2
+  }
+}

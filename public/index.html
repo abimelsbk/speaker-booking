@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Book a talk</title>
+  <meta name="description" content="Invite me to speak at your college, conference or organisation. See my availability and book a date." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+</head>
+<body data-title-suffix="Speaker">
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="/"><span class="brand-mark" data-p="initials">··</span><span data-p="name"></span></a>
+      <nav class="nav-links" aria-label="Main">
+        <a href="#about">About</a>
+        <a href="#topics">Topics</a>
+        <a href="#upcoming">Schedule</a>
+        <a href="#faq">FAQ</a>
+        <a class="btn btn-dark btn-sm" href="/book">Book a session</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow"><span class="dot"></span> Now booking talks &amp; workshops</span>
+          <h1 id="hero-title">Hi, I’m <span data-p="name"></span>. <em>Let’s talk</em> to your audience.</h1>
+          <p class="lead" data-p="tagline"></p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="/book">Check availability &amp; book →</a>
+            <a class="btn btn-ghost" href="#topics">Explore topics</a>
+          </div>
+          <div class="hero-meta">
+            <span>📍 <span data-p="location"></span></span>
+            <span>🎤 <span data-p="title"></span></span>
+          </div>
+        </div>
+        <div class="portrait" id="portrait">
+          <span class="initials" data-p="initials"></span>
+          <div class="portrait-card">
+            <strong id="next-open">Checking availability…</strong>
+            <span class="muted">Requests are reviewed within 48 hours</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap"><div class="stats" id="stats"></div></div>
+
+    <section class="section" id="about">
+      <div class="wrap about-grid reveal">
+        <div>
+          <span class="kicker">About</span>
+          <p class="big">Sessions built for the people in the room — not a slide deck on repeat.</p>
+        </div>
+        <div>
+          <p data-p="bio"></p>
+          <div class="hero-cta" id="socials"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="topics">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div><span class="kicker">Talk topics</span><h2>Popular sessions you can book</h2></div>
+          <p>Every talk is tailored to your audience. Pick one of these or suggest your own when booking.</p>
+        </div>
+        <div class="grid-3" id="topic-grid"></div>
+
+        <div class="section-head reveal spaced">
+          <div><span class="kicker">Formats</span><h2>Ways we can work together</h2></div>
+        </div>
+        <div class="formats reveal" id="formats"></div>
+      </div>
+    </section>
+
+    <section class="section" id="how">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div><span class="kicker">How booking works</span><h2>Three steps, no email ping-pong</h2></div>
+        </div>
+        <div class="steps reveal">
+          <div class="step"><h3>Pick a date &amp; time</h3><p>See my live calendar. Green days are open, amber ones have a few slots left.</p></div>
+          <div class="step"><h3>Tell me about your event</h3><p>Topic, audience, format and venue. Your request holds the slot immediately.</p></div>
+          <div class="step"><h3>Get confirmed</h3><p>I review it personally. Track the status any time with your booking reference.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="upcoming">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div><span class="kicker">Schedule</span><h2>Upcoming talks</h2></div>
+          <p>Where I’ll be speaking next. Want your event on this list? <a href="/book">Book a date</a>.</p>
+        </div>
+        <div class="events" id="events"><div class="empty">Loading schedule…</div></div>
+      </div>
+    </section>
+
+    <section class="section" id="testimonials">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div><span class="kicker">Kind words</span><h2>What organisers say</h2></div>
+        </div>
+        <div class="quotes" id="quotes"></div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="faq">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div><span class="kicker">FAQ</span><h2>Before you book</h2></div>
+          <p>Already sent a request? <a href="/status">Check its status</a>.</p>
+        </div>
+        <div class="faq" id="faq-list"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="cta-band reveal">
+          <div>
+            <h2>Planning a fest, seminar or team event?</h2>
+            <p>Pick a slot on my calendar — it takes about two minutes.</p>
+          </div>
+          <a class="btn btn-primary" href="/book">Book a session →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <span>© <span data-year></span> <span data-p="name"></span></span>
+      <span><a href="/book">Book</a><a href="/status">Booking status</a><a href="/admin">Admin</a></span>
+    </div>
+  </footer>
+
+  <script src="/js/common.js"></script>
+  <script src="/js/landing.js"></script>
+</body>
+</html>

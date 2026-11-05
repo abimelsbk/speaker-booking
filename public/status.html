@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Booking status</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+</head>
+<body data-title-suffix="Booking status">
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="/"><span class="brand-mark" data-p="initials">··</span><span data-p="name"></span></a>
+      <nav class="nav-links" aria-label="Main">
+        <a class="btn btn-dark btn-sm" href="/book">Book a session</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap narrow">
+    <div class="page-head">
+      <span class="kicker">Booking status</span>
+      <h1>Check your request</h1>
+      <p>Enter the reference you got after booking and the email you used.</p>
+    </div>
+    <form class="panel" id="lookup" novalidate>
+      <div class="form-grid">
+        <div class="field"><label for="ref">Booking reference</label><input class="input" id="ref" name="ref" placeholder="BK-XXXXXX" required /></div>
+        <div class="field"><label for="email">Email</label><input class="input" id="email" name="email" type="email" autocomplete="email" required /></div>
+      </div>
+      <div class="form-actions"><button class="btn btn-primary" type="submit">Check status</button></div>
+    </form>
+    <div id="result" aria-live="polite"></div>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <span>© <span data-year></span> <span data-p="name"></span></span>
+      <span><a href="/">Home</a><a href="/book">Book</a></span>
+    </div>
+  </footer>
+
+  <script src="/js/common.js"></script>
+  <script src="/js/status.js"></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+</head>
+<body data-title-suffix="Admin">
+  <header class="nav scrolled">
+    <div class="wrap nav-inner">
+      <a class="brand" href="/"><span class="brand-mark" data-p="initials">··</span><span>Bookings admin</span></a>
+      <nav class="nav-links" aria-label="Admin">
+        <a href="/" target="_blank" rel="noopener">View site ↗</a>
+        <button class="btn btn-ghost btn-sm hidden" id="logout">Sign out</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap admin-shell">
+    <!-- Login -->
+    <form class="panel login-box hidden" id="login">
+      <h2>Sign in</h2>
+      <p class="muted small">The password is in <code>data/.admin-password</code> (or the <code>ADMIN_PASSWORD</code> environment variable).</p>
+      <div id="login-alert"></div>
+      <div class="field"><label for="pw">Password</label><input class="input" id="pw" type="password" autocomplete="current-password" required /></div>
+      <div class="form-actions"><button class="btn btn-dark" type="submit">Sign in</button></div>
+    </form>
+
+    <!-- Dashboard -->
+    <div id="dash" class="hidden">
+      <div class="kpis" id="kpis"></div>
+
+      <div class="toolbar">
+        <div class="tabs" role="tablist" id="tabs">
+          <button class="tab" role="tab" data-tab="pending" aria-selected="true">Requests<span class="count" data-count="pending"></span></button>
+          <button class="tab" role="tab" data-tab="upcoming" aria-selected="false">Upcoming<span class="count" data-count="upcoming"></span></button>
+          <button class="tab" role="tab" data-tab="past" aria-selected="false">Past &amp; closed<span class="count" data-count="past"></span></button>
+          <button class="tab" role="tab" data-tab="blocks" aria-selected="false">Blocked time<span class="count" data-count="blocks"></span></button>
+        </div>
+        <div class="row-flex">
+          <input class="input input-search" id="search" type="search" placeholder="Search name, org, topic, ref…" aria-label="Search bookings" />
+          <a class="btn btn-ghost btn-sm" href="/api/admin/export.csv">Export CSV</a>
+        </div>
+      </div>
+
+      <div id="list" class="booking-list"></div>
+
+      <div id="blocks-view" class="hidden">
+        <form class="panel" id="block-form">
+          <div class="panel-title"><h2>Block time off</h2></div>
+          <p class="muted small">Blocked time can’t be booked. Leave the times empty to block whole days.</p>
+          <div id="block-alert"></div>
+          <div class="form-grid">
+            <div class="field"><label for="b-date">From date</label><input class="input" type="date" id="b-date" required /></div>
+            <div class="field"><label for="b-end">To date <span class="opt">(optional)</span></label><input class="input" type="date" id="b-end" /></div>
+            <div class="field"><label for="b-start">Start time <span class="opt">(optional)</span></label><input class="input" type="time" id="b-start" step="1800" /></div>
+            <div class="field"><label for="b-stop">End time <span class="opt">(optional)</span></label><input class="input" type="time" id="b-stop" step="1800" /></div>
+            <div class="field full"><label for="b-reason">Note <span class="opt">(private)</span></label><input class="input" id="b-reason" placeholder="e.g. Exams, travel, personal" /></div>
+          </div>
+          <div class="form-actions"><button class="btn btn-dark" type="submit">Block time</button></div>
+        </form>
+        <div id="block-list" class="booking-list"></div>
+      </div>
+    </div>
+  </main>
+
+  <dialog id="dlg">
+    <form method="dialog" id="dlg-form">
+      <div class="dlg-head"><h3 id="dlg-title">Booking</h3><button class="icon-btn" value="close" aria-label="Close">✕</button></div>
+      <div class="dlg-body" id="dlg-body"></div>
+      <div class="dlg-foot">
+        <button class="btn btn-danger btn-sm" type="button" id="dlg-delete">Delete</button>
+        <span class="spacer"></span>
+        <button class="btn btn-ghost btn-sm" value="close">Close</button>
+        <button class="btn btn-dark btn-sm" type="button" id="dlg-save">Save changes</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="/js/common.js"></script>
+  <script src="/js/admin.js"></script>
+</body>
+</html>
