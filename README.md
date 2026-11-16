@@ -59,11 +59,30 @@ Declined and cancelled bookings free up their slot again.
 Bookings and blocked time are stored in `data/db.json`. Back this file up — it is your
 booking history. `data/` is git-ignored.
 
-## Deploying
+## Deploying to Netlify
 
-Any host that runs Node works (a small VPS, Render, Railway, Fly.io…). Set
-`HOST=0.0.0.0`, `PORT`, and `ADMIN_PASSWORD`, and make sure `data/` is on persistent
-storage. Put it behind HTTPS (most hosts do this for you).
+The repo is ready for Netlify: `netlify.toml` publishes `public/`, and every `/api/*`
+request runs `netlify/functions/api.js`. Bookings are stored in **Netlify Blobs**
+(store `bookings`), so there's no database to set up.
+
+1. In Netlify, import the GitHub repo. Leave the build settings alone: `netlify.toml` sets them.
+2. **Site configuration → Environment variables →** add `ADMIN_PASSWORD` (pick a strong one).
+3. Trigger a deploy. Then visit `/admin` and sign in.
+
+`config.json` is bundled into the function, so after editing it, commit and push to
+redeploy.
+
+## Code layout
+
+- `lib/core.js`: all booking/API logic, shared by both runtimes
+- `netlify/functions/api.js`: Netlify Function (Netlify Blobs storage)
+- `server.js`: local server (`data/db.json` storage, serves `public/`)
+- `public/`: the pages, styles and browser scripts
+
+## Other hosts
+
+Any host that runs Node also works with `npm start` (a VPS, Railway, Fly.io…). Set
+`HOST=0.0.0.0`, `PORT` and `ADMIN_PASSWORD`, and keep `data/` on persistent storage.
 
 Not included yet: email notifications — new requests show up in the admin dashboard
 and the server log.
