@@ -68,7 +68,7 @@
       const v = el.dataset.p.split('.').reduce((o, k) => (o ? o[k] : undefined), profile);
       if (v !== undefined && v !== null) el.textContent = v;
     });
-    if (document.body.dataset.titleSuffix) document.title = `${profile.name} — ${document.body.dataset.titleSuffix}`;
+    if (document.body.dataset.titleSuffix) document.title = `${profile.brand || profile.name} — ${document.body.dataset.titleSuffix}`;
   }
 
   let toastTimer;
